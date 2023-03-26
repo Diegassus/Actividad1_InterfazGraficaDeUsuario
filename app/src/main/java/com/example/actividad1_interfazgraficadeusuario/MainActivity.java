@@ -70,22 +70,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnConvertir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.rbDolarEuro.isChecked()==true){
-                    String dolares =binding.etDolares.getText().toString();
-                    if(dolares .length()<1){
-                        mv.alerta();
-                    }else {
-                        mv.convertirDolar(Double.parseDouble(dolares));
-                    }
-                } else {
-                    String euros = binding.etEuros.getText().toString();
-                    if(euros.length()<1){
-                        mv.alerta();
-                    }else{
-                        mv.convertirEuro(Double.parseDouble(euros));
-                    }
-                }
-
+                mv.convertir(binding.etDolares.getText().toString(),binding.etEuros.getText().toString());
             }
         });
     }

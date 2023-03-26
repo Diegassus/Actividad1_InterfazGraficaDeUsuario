@@ -19,26 +19,20 @@ public class MainActivityViewController extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public LiveData<Double> getMoneda(){
-        if(moneda == null){
+    public LiveData<Double> getMoneda() {
+        if (moneda == null) {
             this.moneda = new MutableLiveData<>();
         }
-        return moneda ;
+        return moneda;
     }
 
-    public void convertirDolar(double monto){
-        try{
-            moneda.setValue(monto * 0.93);
-        }catch(Exception e){
-            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void convertirEuro(double monto){
-        try{
-            moneda.setValue(monto * 1.08);
-        }catch(Exception e){
-            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+    public void convertir(String dolar , String euro){
+        if(dolar.length()>0){
+            moneda.setValue(Double.parseDouble(dolar) * 0.93);
+        }else if(euro.length()>0){
+            moneda.setValue(Double.parseDouble(euro) * 1.08);
+        }else{
+            alerta();
         }
     }
 
